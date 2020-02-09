@@ -7,7 +7,11 @@
       </div>
       <div class="mu4-cen">
         <div class="mu4-zu1" v-for="item of mu4zu1" :key="item.id">
-          <img :src="item.imgUrl" alt />
+          <div class="kuang">
+            <img class="sw-img" :src="item.imgUrl" alt />
+            <i class="cover"></i>
+            <i class="iconfont icon-play sw-i"></i>
+          </div>
           <p class="mu4-p1">{{item.name1}}</p>
           <p class="mu4-p2">{{item.name2}}</p>
         </div>
@@ -32,7 +36,11 @@
           <p class="mu4-p2">乔洋</p>
         </div> -->
         <div class="mu4-zu1" v-for="item of mu4zu2" :key="item.id">
-          <img :src="item.imgUrl" alt />
+          <div class="kuang">
+            <img class="sw-img" :src="item.imgUrl" alt />
+            <i class="cover"></i>
+            <i class="iconfont icon-play sw-i"></i>
+          </div>
           <p class="mu4-p1">{{item.name1}}</p>
           <p class="mu4-p2">{{item.name2}}</p>
         </div>
@@ -84,7 +92,8 @@ export default {
     font-weight: bold;
     font-size: 30px;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: rgb(236, 236, 236);
     letter-spacing: 10px;
   }
@@ -114,6 +123,44 @@ export default {
         height: 300px;
         display: inline-block;
         margin: 0 3px;
+        .kuang{
+          width: 226px;
+          height: 224px;
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          .sw-i{
+            font-size: 60px;
+            position: absolute;
+            top: 35%;
+            left: 35%;
+            color: white;
+            opacity: 0;
+          }
+          &:hover .sw-i{
+            transform: scale(1.5) translateZ(0);
+            opacity: 0.9;
+            transition: transform 1s;
+          }
+          &:hover .cover{
+            opacity: 0.5;
+            transition: opacity 2s;
+          }
+          &:hover .sw-img{
+            transform: scale(1.2) translateZ(0);
+            transition: transform 2s;
+          }
+          .cover{
+            background: #000;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 2s;
+          }
+        }
         .mu4-p1 {
           font-size: 14px;
           cursor: pointer;

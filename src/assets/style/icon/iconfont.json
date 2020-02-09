@@ -1,0 +1,16 @@
+{
+  "id": "1440524",
+  "name": "no name",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "10046682",
+      "name": "播放",
+      "font_class": "play",
+      "unicode": "e625",
+      "unicode_decimal": 58917
+    }
+  ]
+}

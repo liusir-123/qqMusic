@@ -1,5 +1,8 @@
 <template>
   <div class="gedan">
+    <router-link tag="div" to="/Geshou" class="Header">
+      <div class="header" v-for="item in GeHeader" :key="item.id">{{item.name}}</div>
+    </router-link>
     <div class="tui">
       {{msg}}
     </div>
@@ -12,7 +15,11 @@
           <!-- slides -->
           <swiper-slide>
             <div class="sw-imgs" v-for="item of GedanSl1" :key="item.id">
-              <img class="sw-img" :src="item.imgUrl" alt />
+              <div class="kuang">
+                <img class="sw-img" :src="item.imgUrl" alt />
+                <i class="cover"></i>
+                <i class="iconfont icon-play sw-i"></i>
+              </div>
               <p class="cs">{{item.name1}}</P>
               <div class="bfl">
                 <span>{{item.name2}}</span>
@@ -62,6 +69,17 @@ export default {
         { id: 5, name: "官方歌单" },
         { id: 6, name: "情歌" }
       ],
+      GeHeader:[
+        {id:'01', name: "首页"},
+        {id:'02', name: "歌手"},
+        {id:'03', name: "新碟"},
+        {id:'04', name: "排行榜"},
+        {id:'05', name: "分类歌单"},
+        {id:'06', name: "电台"},
+        {id:'07', name: "MV"},
+        {id:'08', name: "数字专辑"},
+        {id:'09', name: "票务"}
+      ],
       swiperOption: {
         pagination: {el: ".swiper-pagination"},
         loop: true,
@@ -99,16 +117,35 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less">
+body{
+  margin: 0;
+  padding: 0;
+}
 .gedan {
   width: 100%;
   background: #ebe9e9;
+  .Header{
+    text-align: center;
+    background-color: #fff;
+    .header{
+      display: inline-block;
+      margin: 15px 20px;
+      font-size: 15px;
+      &:hover {
+        color: rgba(7, 223, 151, 1);
+        cursor: pointer;
+      }
+    }
+  }
   .tui{
     font-weight: bold;
     font-size: 30px;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     background-color: rgb(236, 236, 236);
     letter-spacing: 10px;
+    // line-height: 100px;
   }
   .mu {
     width: 100%;
@@ -153,6 +190,44 @@ export default {
         height: 300px;
         // border: 1px solid red;
         display: inline-block;
+        .kuang{
+          width: 226px;
+          height: 224px;
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          .sw-i{
+            font-size: 60px;
+            position: absolute;
+            top: 35%;
+            left: 35%;
+            color: white;
+            opacity: 0;
+          }
+          &:hover .sw-i{
+            transform: scale(1.5) translateZ(0);
+            opacity: 0.9;
+            transition: transform 1s;
+          }
+          &:hover .cover{
+            opacity: 0.5;
+            transition: opacity 2s;
+          }
+          &:hover .sw-img{
+            transform: scale(1.2) translateZ(0);
+            transition: transform 2s;
+          }
+          .cover{
+            background: #000;
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0;
+            transition: opacity 2s;
+          }
+        }
         .cs{
           font-size: 13px;
           cursor: pointer;
@@ -173,9 +248,12 @@ export default {
         top: 20%;
         left: 0;
         background: #e0dfdf;
+        background:rgba(219, 218, 218, 0.5);
+        z-index: 1;
         cursor: pointer;
         &:hover{
           background: #b6b5b5;
+          background:rgba(219, 218, 218, 0.8);
         }
         .swiper-button-prev{
           margin-left: -10px;
@@ -196,9 +274,12 @@ export default {
         top: 20%;
         right: 0;
         background: #e0dfdf;
+        background:rgba(219, 218, 218, 0.5);
+        z-index: 1;
         cursor: pointer;
         &:hover{
           background: #b6b5b5;
+          background:rgba(219, 218, 218, 0.8);
         }
         .swiper-button-next{
           margin-right: -10px;
