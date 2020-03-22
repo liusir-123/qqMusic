@@ -179,6 +179,9 @@ body {
         padding-top: 0;
         cursor: pointer;
         margin-right: 14px;
+        &:hover{
+          color: rgb(49, 194, 124);
+        }
       }
     }
     .zuhe{
@@ -204,6 +207,9 @@ body {
         padding-top: 0;
         cursor: pointer;
         margin-right: 14px;
+        &:hover{
+          color: rgb(49, 194, 124);
+        }
       }
     }
     .redu{
@@ -229,6 +235,9 @@ body {
         padding-top: 0;
         cursor: pointer;
         margin-right: 14px;
+        &:hover{
+          color: rgb(49, 194, 124);
+        }
       }
     }
   }

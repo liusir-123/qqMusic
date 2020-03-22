@@ -27,7 +27,6 @@ export default {
     .Bottom{
         width: 100%;
         height: 200px;
-        margin-top: 600px;
         color: #999;
         background-color: #333;
         .adress{

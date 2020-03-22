@@ -1,5 +1,6 @@
 <template>
 <div>
+    <tuijian-navs></tuijian-navs>
     <tuijian-gedan></tuijian-gedan>
     <tuijian-tswiper></tuijian-tswiper>
     <tuijian-zuixin></tuijian-zuixin>
@@ -20,6 +21,7 @@ import TuijianXindie from '@/pages/tuijian/components/Xindie'
 import TuijianPaihang from '@/pages/tuijian/components/Paihang'
 import TuijianMv from '@/pages/tuijian/components/Mv'
 import TuijianBottom from '@/pages/tuijian/components/Bottom'
+import TuijianNavs from '@/pages/tuijian/components/navs'
 export default {
     name: 'Tuijian',
     components: {
@@ -31,6 +33,7 @@ export default {
         TuijianPaihang,
         TuijianMv,
         TuijianBottom,
+        TuijianNavs,
     }
 }
 </script>

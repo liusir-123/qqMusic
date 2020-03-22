@@ -171,10 +171,10 @@
         </swiper>
         <div>
           <div class="anniu1" v-show="seen">
-            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-prev button-prev2" slot="button-prev"></div>
           </div>
           <div class="anniu2" v-show="seen">
-            <div class="swiper-button-next" slot="button-next"></div>
+            <div class="swiper-button-next button-next2" slot="button-next"></div>
           </div>
         </div>
       </div>
@@ -201,8 +201,8 @@ export default {
         pagination: { el: ".swiper-pagination" },
         loop: true,
         navigation: {
-          prevEl: ".swiper-button-prev", // l 是字母 L 的小写，不是数字 1
-          nextEl: ".swiper-button-next"
+          prevEl: ".button-prev2", // l 是字母 L 的小写，不是数字 1
+          nextEl: ".button-next2"
         }
       },
       zu1: [
@@ -290,7 +290,7 @@ export default {
 <style lang="less">
 .zuixin {
   width: 100%;
-  height: 75px;
+  height: 562px;
   background: #ebe9e9;
   .shou {
     font-weight: bold;
@@ -376,7 +376,7 @@ export default {
           background: #b6b5b5;
           background:rgba(219, 218, 218, 0.5);
         }
-        .swiper-button-prev {
+        .button-prev2 {
           margin-left: -10px;
           background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
           width: 80px;
@@ -402,7 +402,7 @@ export default {
           background: #b6b5b5;
           background:rgba(219, 218, 218, 0.5);
         }
-        .swiper-button-next {
+        .button-next2 {
           margin-right: -10px;
           background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
           transform: rotate(180deg);

@@ -1,8 +1,8 @@
 <template>
-  <div class="Header">
-    <div class="header">
-        <div class="Hea-hea" v-for="item in GeHeader" :key="item.id">{{item.name}}</div>
-    </div>
+  <div class="Headers">
+    <!-- <div class="header">
+      <div class="Hea-hea" v-for="item in GeHeader" :style="{color:item.path == path ? 'rgba(7, 223, 151, 1)' :  '' }"  @click="toPath(item.path)" :key="item.id">{{item.name}}</div>
+    </div> -->
     <div class="mu1" :style="{backgroundImage:'url('+require('@/assets/images/singer/heise.jpg')+')'}">
       <div class="mu1-cen">
         <div class="mu1-p1">
@@ -22,13 +22,15 @@
 </template>
 
 <script>
+import TuijianNavs from '@/pages/tuijian/components/navs'
 export default {
   name: "Header",
   data () {
     return {
+      // path:'/Geshou',
       GeHeader:[
-        {id:'01', name: "首页"},
-        {id:'02', name: "歌手"},
+        {id:'01', name: "首页",path:'/'},
+        {id:'02', name: "歌手",path:'/Geshou'},
         {id:'03', name: "新碟"},
         {id:'04', name: "排行榜"},
         {id:'05', name: "分类歌单"},
@@ -38,27 +40,35 @@ export default {
         {id:'09', name: "票务"}
       ] ,
     }
+  },
+  methods: {
+    toPath(path){
+      this.path = path
+      this.$router.push({
+        path
+      })
+    }
   }
 };
 </script>
 
 <style lang="less">
-.Header {
+.Headers {
   width: 100%;
-  height: 430px;
-  .header {
-    text-align: center;
-    background-color: #fff;
-    .Hea-hea{
-    display: inline-block;
-      margin: 15px 20px;
-      font-size: 15px;
-      &:hover {
-        color: rgba(7, 223, 151, 1);
-        cursor: pointer;
-      }
-    }
-  }
+  height: 380px;
+  // .header {
+  //   text-align: center;
+  //   background-color: #fff;
+  //   .Hea-hea{
+  //   display: inline-block;
+  //     margin: 15px 20px;
+  //     font-size: 15px;
+  //     &:hover {
+  //       color: rgba(7, 223, 151, 1);
+  //       cursor: pointer;
+  //     }
+  //   }
+  // }
   .mu1{
     width: 100%;
     height: 380px;

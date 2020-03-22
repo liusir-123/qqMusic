@@ -37,8 +37,7 @@ export default {
 .Paihang {
   width: 100%;
   background: #ebe9e9;
-  height: 75px;
-  margin-top: 685px;
+  height: 687px;
   .ph {
     font-weight: bold;
     font-size: 30px;

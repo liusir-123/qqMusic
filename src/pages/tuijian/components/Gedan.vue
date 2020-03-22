@@ -1,14 +1,14 @@
 <template>
   <div class="gedan">
-    <router-link tag="div" to="/Geshou" class="Header">
-      <div class="header" v-for="item in GeHeader" :key="item.id">{{item.name}}</div>
-    </router-link>
+    <!-- <div class="Headers">
+      <div class="header" v-for="item in GeHeader" :style="{color:item.path == path ? 'rgba(7, 223, 151, 1)' :  '' }"  @click="toPath(item.path)" :key="item.id">{{item.name}}</div>
+    </div> -->
     <div class="tui">
       {{msg}}
     </div>
     <div class="mu">
       <div class="xuan">
-        <div class="xuanze" v-for="item in navs" :key="item.id">{{item.name}}</div>
+        <div class="xuanze" v-for="item in navss" :key="item.id">{{item.name}}</div>
       </div>
       <div class="wrapper" @mouseenter="enter" @mouseleave="leave">
         <swiper :options="swiperOption" ref="mySwiper">
@@ -28,7 +28,11 @@
           </swiper-slide>
           <swiper-slide>
             <div class="sw-imgs" v-for="item of GedanSl2" :key="item.id">
-              <img class="sw-img" :src="item.imgUrl" alt />
+              <div class="kuang">
+                <img class="sw-img" :src="item.imgUrl" alt />
+                <i class="cover"></i>
+                <i class="iconfont icon-play sw-i"></i>
+              </div>
               <p class="cs">{{item.name1}}</P>
               <div class="bfl">
                 <span>{{item.name2}}</span>
@@ -43,10 +47,10 @@
         </swiper>
         <div>
           <div class="anniu1" v-show="seen">
-            <div class="swiper-button-prev" slot="button-prev"></div>
+            <div class="swiper-button-prev button-prev0" slot="button-prev"></div>
           </div>
           <div class="anniu2" v-show="seen">
-            <div class="swiper-button-next" slot="button-next"></div>
+            <div class="swiper-button-next button-next0" slot="button-next"></div>
           </div>
         </div>
       </div>
@@ -55,13 +59,18 @@
 </template>
 
 <script>
+import TuijianNavs from '@/pages/tuijian/components/navs'
 export default {
   name: "Gedan",
   data () {
     return {
+      // path: "/",
+      components: {
+        TuijianNavs,
+      },
       msg: "歌单推荐",
       seen: false,
-      navs: [
+      navss: [
         { id: 1, name: "为你推荐" },
         { id: 2, name: "九月推荐" },
         { id: 3, name: "网络歌曲" },
@@ -69,23 +78,23 @@ export default {
         { id: 5, name: "官方歌单" },
         { id: 6, name: "情歌" }
       ],
-      GeHeader:[
-        {id:'01', name: "首页"},
-        {id:'02', name: "歌手"},
-        {id:'03', name: "新碟"},
-        {id:'04', name: "排行榜"},
-        {id:'05', name: "分类歌单"},
-        {id:'06', name: "电台"},
-        {id:'07', name: "MV"},
-        {id:'08', name: "数字专辑"},
-        {id:'09', name: "票务"}
-      ],
+      // GeHeader:[
+      //   {id:'01', name: "首页",path:'/'},
+      //   {id:'02', name: "歌手",path:'/Geshou'},
+      //   {id:'03', name: "新碟"},
+      //   {id:'04', name: "排行榜"},
+      //   {id:'05', name: "分类歌单"},
+      //   {id:'06', name: "电台"},
+      //   {id:'07', name: "MV"},
+      //   {id:'08', name: "数字专辑"},
+      //   {id:'09', name: "票务"}
+      // ],
       swiperOption: {
         pagination: {el: ".swiper-pagination"},
         loop: true,
         navigation: {
-          prevEl: '.swiper-button-prev',// l 是字母 L 的小写，不是数字 1
-          nextEl: '.swiper-button-next'
+          prevEl: '.button-prev0',// l 是字母 L 的小写，不是数字 1
+          nextEl: '.button-next0'
         }
       },
       GedanSl1: [
@@ -110,6 +119,12 @@ export default {
     },
     leave: function () {
       this.seen = false;
+    },
+    toPath(path){
+      this.path = path
+      this.$router.push({
+        path
+      })
     }
   }
 };
@@ -124,19 +139,20 @@ body{
 .gedan {
   width: 100%;
   background: #ebe9e9;
-  .Header{
-    text-align: center;
-    background-color: #fff;
-    .header{
-      display: inline-block;
-      margin: 15px 20px;
-      font-size: 15px;
-      &:hover {
-        color: rgba(7, 223, 151, 1);
-        cursor: pointer;
-      }
-    }
-  }
+  height: 537px;
+  // .Headers{
+  //   text-align: center;
+  //   background-color: #fff;
+  //   .header{
+  //     display: inline-block;
+  //     margin: 15px 20px;
+  //     font-size: 15px;
+  //     &:hover {
+  //       color: rgba(7, 223, 151, 1);
+  //       cursor: pointer;
+  //     }
+  //   }
+  // }
   .tui{
     font-weight: bold;
     font-size: 30px;
@@ -255,7 +271,7 @@ body{
           background: #b6b5b5;
           background:rgba(219, 218, 218, 0.8);
         }
-        .swiper-button-prev{
+        .button-prev0{
           margin-left: -10px;
           background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E") !important;
           width: 80px;
@@ -281,7 +297,7 @@ body{
           background: #b6b5b5;
           background:rgba(219, 218, 218, 0.8);
         }
-        .swiper-button-next{
+        .button-next0{
           margin-right: -10px;
           background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23000000'%2F%3E%3C%2Fsvg%3E")  !important;
           transform:rotate(180deg);

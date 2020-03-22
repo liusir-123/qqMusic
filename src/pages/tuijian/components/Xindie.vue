@@ -85,9 +85,8 @@ export default {
 <style lang="less">
 .Xindie {
   width: 100%;
-  height: 75px;
+  height: 762px;
   background: #ebe9e9;
-  margin-top: 350px;
   .xin {
     font-weight: bold;
     font-size: 30px;
